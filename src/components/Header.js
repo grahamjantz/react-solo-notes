@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import Button from './Button'
 import InputTask from './InputTask'
 
-const Header = ({ title, subtitle }) => {
+const Header = ({ title, subtitle, onAdd }) => {
   return (
     <div className='header'>
         <div className='subheader'>
@@ -12,7 +12,7 @@ const Header = ({ title, subtitle }) => {
             </div>
             <Button text="Add"/>
         </div>
-        <InputTask />
+        <InputTask onAdd={onAdd}/>
     </div>
   )
 }

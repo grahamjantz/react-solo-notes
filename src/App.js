@@ -23,12 +23,20 @@ function App() {
       priority: true
     }
   ])
+
+  const addNotes = () => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newNote = { id, ...notes };
+    setNotes([ ...notes, newNote ]);
+  }
+
   return (
     <div className="App">
       <header>
         <Header 
           title="Solo Notes"
           subtitle="a 100% self made note taking app"
+          onAdd={addNotes}
         />
         <Notes notes={notes}/>
       </header>

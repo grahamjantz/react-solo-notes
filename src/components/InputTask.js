@@ -1,20 +1,36 @@
-import React from 'react'
+import { React, useState } from 'react'
 import Button from './Button'
 
-const InputTask = () => {
+const InputTask = ({ onAdd }) => {
+  const [text, setText] = useState('')
+  const [date, setDate] = useState('')
+  const [priority, setPriority] = useState(false)
+
+  const onSubmit = (/*e*/) => {
+    // e.preventDefault();
+
+    onAdd({ text, date, priority});
+
+    setText('')
+    setDate('')
+    setPriority(false);
+  }
+
   return (
-    <div>
-        <label>Add Note</label>
-        <input type="text" placeholder='Add Note' />
-        
-        <label>Add Date</label>
-        <input type="text" placeholder='Add Date' />
+    <form onSubmit={onSubmit}>
+      <div>
+          <label>Add Note</label>
+          <input type="text" placeholder='Add Note' />
+          
+          <label>Add Date</label>
+          <input type="text" placeholder='Add Date' />
 
-        <label>Priority</label>
-        <input type="checkbox" />
+          <label>Priority</label>
+          <input type="checkbox" />
 
-        <Button text="Submit" />
-    </div>
+          <input type="submit" value="add" />
+      </div>
+    </form>
   )
 }
 
